@@ -1,6 +1,38 @@
-# WordPress в Docker Compose
+# 🐳 WordPress в Docker Compose
 
-Развёртывание WordPress с базой данных MySQL с помощью Docker Compose.
+Развёртывание WordPress с базой данных MySQL 8.0 в изолированной Docker-сети с помощью Docker Compose.
+
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+![WordPress](https://img.shields.io/badge/WordPress-latest-21759B?logo=wordpress&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
+
+---
+
+## 📖 О проекте
+
+Репозиторий содержит готовую конфигурацию для быстрого развёртывания сайта на WordPress в Docker.
+
+Что поднимается:
+
+- **WordPress** — веб-приложение (порт `8081`)
+- **MySQL 8.0** — база данных
+- **Docker-сеть** `wp-network` — изоляция сервисов
+- **Именованные тома** `db_data`, `wordpress_data` — сохранение данных между перезапусками
+
+## 🗂️ Структура репозитория
+
+```
+.
+├── compose.yaml     # Конфигурация Docker Compose
+├── img/             # Скриншоты
+└── README.md        # 👈 Вы здесь
+```
+
+## ⚙️ Требования
+
+- Docker Engine 20.10+
+- Docker Compose v2 (`docker compose`)
+- Свободный порт `8081`
 
 ## 📋 Шаг 1: Проверка текущих контейнеров
 
@@ -16,17 +48,9 @@ docker compose ls
 docker compose stop
 ```
 
-## 📁 Шаг 2: Создание структуры проекта
+## 📝 Шаг 2: Файл `compose.yaml`
 
-Создайте папку проекта и файл `compose.yaml`:
-
-```bash
-mkdir -p wordpress && touch wordpress/compose.yaml && cd wordpress
-```
-
-## 📝 Шаг 3: Создание файла compose.yaml
-
-Откройте файл `compose.yaml` в текстовом редакторе и вставьте следующее содержимое:
+Конфигурация уже в репозитории:
 
 ```yaml
 services:
@@ -68,9 +92,9 @@ volumes:
   wordpress_data:
 ```
 
-## 🚀 Шаг 4: Запуск проекта
+## 🚀 Шаг 3: Запуск проекта
 
-Находясь в папке `wordpress`, выполните:
+Из корня репозитория:
 
 ```bash
 docker compose up -d
@@ -80,24 +104,25 @@ docker compose up -d
 
 ![Запуск docker compose up](photo_2026-09-15_12-26-02.jpg)
 
-## ✅ Шаг 5: Проверка статуса
+## ✅ Шаг 4: Проверка статуса
 
 ```bash
 docker compose ps -a
 ```
 
-Оба контейнера должны иметь статус **Up**.
+Оба контейнера (`db` и `wordpress`) должны иметь статус **Up**.
 
-## 🌐 Шаг 6: Открытие WordPress
+## 🌐 Шаг 5: Открытие WordPress
 
-Перейдите в браузере по адресу: **http://localhost:8081**
+Перейдите в браузере по адресу:
+
+👉 **http://localhost:8081**
 
 Пройдите стандартную установку WordPress:
 
 1. Выберите язык
-2. Введите данные сайта
-3. Создайте пользователя (логин/пароль)
-4. Войдите в админ-панель
+2. Введите название сайта и данные администратора
+3. Войдите в админ-панель
 
 ![Установка WordPress](photo_2026-09-15_12-25-52.jpg)
 
@@ -105,36 +130,33 @@ docker compose ps -a
 
 ## 🛠️ Полезные команды
 
-**Просмотр логов:**
-
 ```bash
-# Логи WordPress
-docker compose logs -f wordpress
-
-# Логи базы данных
-docker compose logs -f db
-```
-
-**Управление:**
-
-```bash
-docker compose stop      # Остановить
-docker compose start     # Запустить
+docker compose stop      # Остановить контейнеры
+docker compose start     # Запустить остановленные
 docker compose restart   # Перезапустить
+docker compose logs -f   # Логи в реальном времени
+
+# Логи отдельного сервиса
+docker compose logs -f wordpress
+docker compose logs -f db
 ```
 
 ## 🗑️ Удаление проекта
 
 ```bash
-# Остановить и удалить контейнеры
+# Остановить и удалить контейнеры (данные в томах сохранятся)
 docker compose down
 
-# Полное удаление с данными (осторожно!)
+# Полное удаление вместе с данными (осторожно!)
 docker compose down -v
 ```
 
 ## 📌 Примечания
 
 - WordPress доступен на порту **8081**
-- Данные БД и файлы WordPress сохраняются в именованных томах `db_data` и `wordpress_data`
-- Для продакшена обязательно смените пароли в секции `environment`
+- Данные хранятся в именованных томах `db_data` и `wordpress_data`
+- ⚠️ Пароли в `compose.yaml` указаны для локальной разработки — **для продакшена обязательно смените их**
+
+## 📄 Лицензия
+
+MIT
