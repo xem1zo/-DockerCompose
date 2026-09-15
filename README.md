@@ -10,7 +10,7 @@
 
 ## 📖 О репозитории
 
-Здесь собраны практические работы по контейнеризации приложений с помощью Docker Compose.
+Здесь собраны практические работы по Docker Compose.
 
 Текущая работа — развёртывание сайта на **WordPress** с базой данных **MySQL 8.0** в изолированной Docker-сети.
 
@@ -18,18 +18,34 @@
 
 ```
 .
-├── wordpress/
-│   ├── compose.yaml     # Конфигурация Docker Compose
-│   └── README.md        # 📘 Подробная инструкция по работе
-├── img/                 # Скриншоты для документации
-└── README.md            # 👈 Вы здесь
+├── README.md            # 👈 Вы здесь (точка входа)
+└── grrrmonday/          # 📘 Практическая работа
+    ├── compose.yaml
+    ├── photo_2026-09-15_12-25-52.jpg
+    ├── photo_2026-09-15_12-26-02.jpg
+    ├── photo_2026-09-15_12-26-06.jpg
+    └── README.md        # Подробная инструкция
 ```
 
 ## 📚 Работы
 
 | № | Работа | Описание | Ссылка |
 |---|--------|----------|--------|
-| 1 | WordPress + MySQL | Развёртывание WordPress в Docker Compose | [📘 Открыть инструкцию](wordpress/README.md) |
+| 1 | WordPress + MySQL | Развёртывание WordPress в Docker Compose | [📘 Открыть инструкцию](grrrmonday/README.md) |
+
+## 🚀 Быстрый старт
+
+Полная инструкция — в **[grrrmonday/README.md](grrrmonday/README.md)**.
+
+Кратко:
+
+```bash
+git clone https://github.com/xem1zo/-DockerCompose.git
+cd -DockerCompose/grrrmonday
+docker compose up -d
+```
+
+После запуска откройте: 👉 **http://localhost:8081**
 
 ## ⚙️ Требования
 
@@ -37,26 +53,6 @@
 - Docker Compose v2 (`docker compose`)
 - Свободный порт `8081`
 
-## 🚀 Быстрый старт
-
-Полная инструкция — в **[wordpress/README.md](wordpress/README.md)**.
-
-Краткая версия:
-
-```bash
-git clone <URL_репозитория>
-cd <имя-репозитория>/wordpress
-docker compose up -d
-```
-
-После запуска откройте: 👉 **http://localhost:8081**
-
-## 📌 Примечания
-
-- WordPress доступен на порту **8081**
-- Данные сохраняются в именованных томах `db_data` и `wordpress_data`
-- ⚠️ Пароли в `compose.yaml` указаны для локальной разработки — для продакшена смените их
-
 ## 📄 Лицензия
 
-Проект распространяется под лицензией MIT.
+MIT
