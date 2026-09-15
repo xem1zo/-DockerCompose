@@ -23,9 +23,11 @@
 
 ```
 .
-├── compose.yaml     # Конфигурация Docker Compose
-├── img/             # Скриншоты
-└── README.md        # 👈 Вы здесь
+├── compose.yaml                     # Конфигурация Docker Compose
+├── photo_2026-09-15_12-25-52.jpg    # Скриншот: установка WordPress
+├── photo_2026-09-15_12-26-02.jpg    # Скриншот: запуск docker compose up
+├── photo_2026-09-15_12-26-06.jpg    # Скриншот: админ-панель WordPress
+└── README.md                        # 👈 Вы здесь
 ```
 
 ## ⚙️ Требования
@@ -160,3 +162,4 @@ docker compose down -v
 ## 📄 Лицензия
 
 MIT
+
