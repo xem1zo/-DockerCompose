@@ -1,44 +1,19 @@
-# 🐳 WordPress в Docker Compose
+# WordPress в Docker Compose
 
-Развёртывание WordPress с базой данных MySQL 8.0 в изолированной Docker-сети с помощью Docker Compose.
+Развёртывание WordPress с базой данных MySQL 8.0 в изолированной Docker-сети.
 
-[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://docs.docker.com/compose/)
-[![WordPress](https://img.shields.io/badge/WordPress-latest-21759B?logo=wordpress&logoColor=white)](https://wordpress.org/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
-
----
-
-## 📖 О проекте
-
-Репозиторий содержит готовую конфигурацию для быстрого развёртывания сайта на WordPress в Docker.
-
-Что поднимается:
-
-- **WordPress** — веб-приложение (порт `8081`)
-- **MySQL 8.0** — база данных
-- **Docker-сеть** `wp-network` — изоляция сервисов
-- **Именованные тома** `db_data`, `wordpress_data` — сохранение данных между перезапусками
-
-## 🗂️ Структура репозитория
+## 🗂️ Содержимое папки
 
 ```
 .
 ├── compose.yaml                     # Конфигурация Docker Compose
-├── photo_2026-09-15_12-25-52.jpg    # Скриншот: установка WordPress
-├── photo_2026-09-15_12-26-02.jpg    # Скриншот: запуск docker compose up
-├── photo_2026-09-15_12-26-06.jpg    # Скриншот: админ-панель WordPress
+├── photo_2026-09-15_12-25-52.jpg    # Установка WordPress
+├── photo_2026-09-15_12-26-02.jpg    # Запуск docker compose up
+├── photo_2026-09-15_12-26-06.jpg    # Админ-панель WordPress
 └── README.md                        # 👈 Вы здесь
 ```
 
-## ⚙️ Требования
-
-- Docker Engine 20.10+
-- Docker Compose v2 (`docker compose`)
-- Свободный порт `8081`
-
 ## 📋 Шаг 1: Проверка текущих контейнеров
-
-Проверьте, какие Docker Compose приложения уже запущены:
 
 ```bash
 docker compose ls
@@ -51,8 +26,6 @@ docker compose stop
 ```
 
 ## 📝 Шаг 2: Файл `compose.yaml`
-
-Конфигурация уже в репозитории:
 
 ```yaml
 services:
@@ -96,7 +69,7 @@ volumes:
 
 ## 🚀 Шаг 3: Запуск проекта
 
-Из корня репозитория:
+Из папки `grrrmonday`:
 
 ```bash
 docker compose up -d
@@ -162,4 +135,3 @@ docker compose down -v
 ## 📄 Лицензия
 
 MIT
-
